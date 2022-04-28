@@ -1,0 +1,8 @@
+{
+    "Images":
+    [
+        {"URL":"g1.jpg", "Caption":"Image 1"},
+        {"URL":"g2.jpg", "Caption":"Image 2"},
+        {"URL":"g3.jpg", "Caption":"Image 3"}
+    ]
+}

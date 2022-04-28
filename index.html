@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" media="screen and (max-width:800px)" href="tablet.css">
+  <link rel="stylesheet" media="screen and (max-width:530px)" href="phone.css">
+
+  <style>
+    .rightpic {
+      float: right;
+      margin: 0 0 5px 5px;
+      height: 100%;
+      object-fit: cover;
+      object-position: -180px;
+    }
+  </style>
+</head>
+
+<body>
+  
+  <nav>
+    <ul>
+        <li><a href="#index">Home</a></li>
+        <li><a href="#about">About me</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+  <section id="index">
+    <div class="container">
+      <section class="banner">
+          <div class="hdln">
+              <h1>I AM <span>♡</span> <br>TURSUNBOYEVA <br>GULIRANO</h1><br>
+              <button>Here me</button>
+          </div>
+          <div class="pic">
+              <img src="girl.svg" alt="">
+          </div>
+      </section>
+    </div>
+  </section>
+
+  
+
+  <h1 class="headings">ABOUT ME</h1>
+
+  <section id="about">
+    <div id="intro">
+      <h2>TURSUNBOYEVA GULIRANO</h2>
+      <p> We are recreating ourselves. What could be better than time to recreate and define the VISION of the future.
+        So we should all be able to see our future, "have a vision for the future." I simply went to this goal, taking
+        risks. I had even in such moments when
+        I could say:"everything did not work out",
+        but no, I continued to struggle, tried to do this and all the time asserted to myself
+        "I can do it!!!!" which I wanted to enter, Yes, I chose IT knowing that it is difficult, I took a risk and I
+        succeeded, I am now studying and it's simple cool, it's good that I chose this area, I see myself only in this
+        area, and I continue to try to see my future based on this goal and
+        I go to my future and one day I will achieve it.</p>
+    </div>
+
+    
+    <img src="3110227437.jpg" alt="" width="575px" height="250" class="rightpic">
+  </section>
+
+  <section id="portfolio">
+    <h1 class="headings">PORTFOLIO</h1>
+
+    <div id="header"></div>
+
+    <div id="gallery" class="row row-cols-md-3"></div>
+
+    <!---Modal --->
+    <div class="modal fade bg-dark" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content bd-info">
+
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Image Gallery with Carousel</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">
+              
+              <!-- Carousel -->
+              <div id="demo" class="carousel slide" data-bs-ride="carousel">
+
+                <!-- Indicators/dots -->
+                <div id='divButton' class="carousel-indicators">
+                  
+                </div>
+
+                <!-- The slideshow/carousel -->
+                <div id='divSlide' class="carousel-inner">
+
+                </div>
+
+                <!-- Left and right controls/icons -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+                  <span class="carousel-control-next-icon"></span>
+                </button>
+              </div>
+
+            <!---End Carousel --->
+          </div>
+
+          <!-- Modal footer -->
+        
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <h1 class="headings">SERVICES</h1>
+    <div class="box">
+      <img src="518-5186767_clip-art-hd-png-download.png" alt="">
+      <h1 class="headings">Website Design</h1>
+      <p>A beginner designer with little experience, but I do work with taste and quality,
+        I am studying to be a programmer at the Singapore Institute for Management Development in Tashkent (MDIST) at
+        Bangor University.
+        I create designs for websites, mobile applications,
+        logos and printed materials. When designing the design, I pay special attention to creating
+        a stylish and modern interface. Technical skills: Adobe Photoshop, СLion, HTML and CSS, etc.</p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h1 class="headings">Contact</h1>
+    <form action="" class="form">
+      <input type="text" name="name" class="input" placeholder="Enter Your name">
+      <input type="email" name="email" class="email" placeholder="Enter Your Email">
+      <textarea name="msg" id="msg" cols="30" rows="10" placeholder="Enter Your Message"></textarea>
+      <input type="submit" value="SEND" id="send">
+    </form>
+  </section>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  fetch('json/images.json').then(function(response) {
+  response.json().then(function(json) {
+
+	var header = document.getElementById('header');
+	var gallery = document.getElementById('gallery');
+
+	var hCaption = document.createElement('h1'); 
+	//<h1>This is the Gallery Page</h1>
+	hCaption.innerText = "This is the Gallery Page";
+	header.appendChild(hCaption);
+
+	for(var i=0; i < json.Images.length; i++){
+		var img = document.createElement('img');
+		img.src = json.Images[i].URL;
+		img.alt = json.Images[i].Caption;
+		img.class = "card-img-top";
+		img.style = "width: 100%";
+
+		var aImg = document.createElement('a');
+		aImg.href = json.Images[i].URL;
+		aImg.setAttribute("data-bs-toggle","modal");
+		aImg.setAttribute("data-bs-toggle","modal");
+		aImg.setAttribute("data-bs-target","#myModal");
+		
+
+		var divCardBody = document.createElement('div');
+		divCardBody.class = "card-body";
+
+		var imgCaption = document.createElement('h4');
+		imgCaption.innerText = json.Images[i].Caption;
+		imgCaption.class = "card-title";
+		imgCaption.style = "text-align:center";
+
+		var divCard = document.createElement('div');
+		divCard.class = "card";
+		divCard.style = "width:100%"
+
+		var divCol = document.createElement('div');
+		divCol.class = "col";
+
+		aImg.appendChild(img);
+		divCardBody.appendChild(imgCaption);
+		divCard.appendChild(aImg);
+		divCard.appendChild(divCardBody);
+		divCol.appendChild(divCard);
+		gallery.appendChild(divCol);
+
+		//Carousel Button
+		var divButton = document.getElementById('divButton');
+		var cButton = document.createElement('button');
+		cButton.type ='button';
+		cButton.setAttribute("data-bs-target","#demo");
+		cButton.setAttribute("data-bs-slide-to",i);
+		if(i==0){
+			cButton.setAttribute("class","active");;
+		}
+		divButton.appendChild(cButton);
+
+		//Carousel Slide
+		var divSlide = document.getElementById('divSlide');
+		var divImage = document.createElement('div');
+		
+		if(i==0){
+			divImage.setAttribute("class","carousel-item active");
+		}
+		else{
+			divImage.setAttribute("class","carousel-item");
+		}
+
+		var imgSlide = document.createElement('img');
+		imgSlide.style="width:100%";
+		imgSlide.src=json.Images[i].URL;
+		imgSlide.alt=json.Images[i].Caption;
+		imgSlide.class="d-block w-100";
+
+		var divCaption = document.createElement('div');
+		divCaption.setAttribute("class","carousel-caption");
+		var imgSlideCaption = document.createElement('h4');
+		imgSlideCaption.innerText= json.Images[i].Caption;
+		divCaption.appendChild(imgSlideCaption);
+		divImage.appendChild(imgSlide);
+		divImage.appendChild(divCaption);
+		divSlide.appendChild(divImage);
+	}
+   
+
+  });
+});
+
+
+</script>
+</html>
